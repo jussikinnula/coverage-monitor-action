@@ -11893,7 +11893,7 @@ function readMetric(coverage, { thresholdAlert = 50, thresholdWarning = 90 } = {
       total: data.statements * 1,
       covered: data.coveredstatements * 1,
     },
-    methods: {
+    functions: {
       total: data.methods * 1,
       covered: data.coveredmethods * 1,
     },
@@ -11905,7 +11905,7 @@ function readMetric(coverage, { thresholdAlert = 50, thresholdWarning = 90 } = {
 
   metric.statements.rate = calcRate(metric.statements);
   metric.lines.rate = calcRate(metric.lines);
-  metric.methods.rate = calcRate(metric.methods);
+  metric.functions.rate = calcRate(metric.functions);
   metric.branches.rate = calcRate(metric.branches);
 
   metric.level = calculateLevel(metric, { thresholdAlert, thresholdWarning });
@@ -11940,8 +11940,10 @@ function generateTable({
 
 |  Totals | ![Coverage](${generateBadgeUrl(metric)}) |
 | :-- | --: |
-| Statements: | ${generateInfo(metric.lines)} |
-| Methods: | ${generateInfo(metric.methods)} |
+| Statements: | ${generateInfo(metric.statements)} |
+| Branches: | ${generateInfo(metric.branches)} |
+| Functions: | ${generateInfo(metric.functions)} |
+| Lines: | ${generateInfo(metric.lines)} |
 `;
 }
 
